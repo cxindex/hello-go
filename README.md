@@ -1,0 +1,1 @@
+just some scratches about Go-lang
