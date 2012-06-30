@@ -38,7 +38,8 @@ func (st stack) String() (str string) {
 
 
 func main() {
-	var st stack
+//	var st stack
+	st := new(stack)
 	for i := 0; i < 18; i++ {
 		st.push(i+10)
 	}
