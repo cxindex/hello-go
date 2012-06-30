@@ -1,1 +1,1 @@
-just some scratches about Go-lang
+just some scratches in Go-lang
