@@ -29,9 +29,10 @@ func (st *stack) pop() int {
 func main() {
 	var st stack
 	for i := 0; i < 18; i++ {
-		st.push(i)
+		st.push(i+10)
 	}
 	fmt.Println(st.a)
+	fmt.Printf("%v\n", st)
 
 	for i := 0; i < 18; i++ {
 		st.pop()
