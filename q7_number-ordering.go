@@ -1,4 +1,3 @@
-//with a func
 package main
 
 import "fmt"
