@@ -1,5 +1,5 @@
 package main
-
+//without $GOPATH
 import stack "./stack"
 import "fmt"
 //and we can use st.I
