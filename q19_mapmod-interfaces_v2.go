@@ -29,5 +29,4 @@ func main() {
 	a := []interface{}{1,2,3,43,4}
 	mult(a)
 	fmt.Println(a)
-
 }
