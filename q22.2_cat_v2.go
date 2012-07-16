@@ -3,11 +3,11 @@
 package main
 
 import (
+	"bufio"
 	"flag"
 	"fmt"
-	"os"
 	"io"
-	"bufio"
+	"os"
 )
 
 var nflag *bool = flag.Bool("n", false, "number all output lines")
