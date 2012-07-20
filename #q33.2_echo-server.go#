@@ -1,0 +1,57 @@
+//here we can read and write. concurrent
+//based on q33.1_echo-server_v2.go
+package main
+
+import (
+	"bufio"
+	"fmt"
+	"net"
+	"os"
+)
+
+func ConnHandler(conn *net.Conn) []byte {
+	fmt.Println("Start conn:", conn)
+	defer (*conn).Close()
+	reader := bufio.NewReader(os.Stdin)
+	q := make(chan int)
+	b := make([]byte, 1024)
+	for {
+		go func() {
+			s, _ := reader.ReadString('\n')
+			(*conn).Write([]byte(s))
+			q <- 1
+		}()
+		go func() {
+			n, _ := (*conn).Read(b)
+			if n == 0 {
+				fmt.Println("End conn:", conn)
+				q <- -1
+				return
+			}
+			fmt.Printf("%s", string(b[:n]))
+			q <- 1
+		}()
+		if <-q == -1 {
+			break
+		}
+	}
+	println("Q")
+	return b
+}
+
+func main() {
+	l, err := net.Listen("tcp", ":6666")
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	for {
+		conn, err := l.Accept()
+		if err != nil {
+			fmt.Println(err, conn)
+			return
+		}
+		fmt.Println(err, conn)
+		//		go ConnHandler(&conn)
+	}
+}

@@ -1,3 +1,4 @@
+//here we can read, but cant write, yet
 package main
 
 import (
@@ -6,15 +7,15 @@ import (
 )
 
 func ConnHandler(conn *net.Conn) []byte {
+	defer (*conn).Close()
 	b := make([]byte, 1024)
 	for {
 		n, _ := (*conn).Read(b)
 		if n == 0 {
 			break
 		}
-		fmt.Printf("!%s", string(b))
+		fmt.Printf("!%s", string(b[:n]))
 	}
-	(*conn).Close()
 	return b
 }
 
