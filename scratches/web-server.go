@@ -3,11 +3,8 @@ package main
 import (
 	"fmt"
 	"log"
-	// "strings"
 	"net/http"
-	// "os"
 	"os/exec"
-	// "io/ioutil"
 )
 
 const (
